@@ -11,7 +11,10 @@
  * \date 29.04.18
  */
 
-#include "opt_parser.h"
+//#include "opt_parser.h"
+#include <fstream>
+#include <algorithm>
+
 #include "density.h"
 #include "dmatrix.c"
 #include <omp.h>
@@ -69,19 +72,33 @@ int main(int argc, char *argv[]){
     ///////////////////////////////////////////////////////////////////////////////
 
     // Read input file
-    string input_path(argv[1]);
-    input_params_t input = read_opt_file(input_path);
+//    string input_path(argv[1]);
+//    input_params_t input = read_opt_file(input_path);
 
-    int N_bath = input.N_bath;
-    int N_slice = input.N_tslice;
-    int Ncut = input.N_cut;
-    double timestep = input.prop_tstep;
-    double T = input.total_time;
-    int Nsample = input.N_sample;
-    double w_max = input.w_max;
-    double eta = input.eta;
-    double beta = input.beta;
-    double delta = input.delta;
+//    int N_bath = input.N_bath;
+//    int N_slice = input.N_tslice;
+//    int Ncut = input.N_cut;
+//    double timestep = input.prop_tstep;
+//    double T = input.total_time;
+//    int Nsample = input.N_sample;
+//    double w_max = input.w_max;
+//    double eta = input.eta;
+//    double beta = input.beta;
+//    double delta = input.delta;
+
+    int N_bath = 200;
+    int N_slice = 60;
+    int Ncut = 10;
+    double timestep = 0.05;
+    double T = 15;
+    int Nsample = 10000;
+    double w_max = 3;
+    double eta = 0.13;
+    double beta = 25;
+    double delta = 0.8;
+
+    int Regression_test = 1;
+
 
     ///////////////////////////////////////////////////////////////////////////////
     /// ALLOCATING MEMORY
@@ -265,7 +282,8 @@ for (int i = 0; i < Nsample; ++i){
 
 
     // Regression Testing
-    if(input.Regression_test == 1){
+//    if(input.Regression_test == 1){
+    if(Regression_test == 1){
 
     // Reading expected and variance values from file
     double *expected_value = new double[62];
