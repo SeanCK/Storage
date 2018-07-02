@@ -1,0 +1,18 @@
+N_bath=200
+N_tslice=60
+N_cut=10
+N_sample=10000
+total_time=15
+beta=25
+delta=0.8
+w_max=3
+eta=0.13
+prop_tstep=0.05
+
+# Set Regression_test=1 for on, 0 for off
+# For regression testing set above parameters to:
+# N_bath=200 N_tslice=60 N_cut=10 N_sample=10000 total_time=15 beta=25 delta=0.8 w_max=3 eta=0.13 prop_tstep=0.05
+
+Regression_test=1
+
+
